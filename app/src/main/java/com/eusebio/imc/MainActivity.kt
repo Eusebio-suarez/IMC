@@ -2,15 +2,19 @@ package com.eusebio.imc
 
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.slider.RangeSlider
 
 class MainActivity : AppCompatActivity() {
     private var isMaleSelected = true
     private var isFemaleSelected = false
+
+    private var height = 120
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,12 +26,22 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        //genders
+
         //male card
         val maleCard = findViewById<CardView>(R.id.maleCard)
 
         //female card
         val femaleCard = findViewById<CardView>(R.id.femaleCard)
 
+        //altura
+        val heightText = findViewById<TextView>(R.id.height)
+
+        //rangon de altura
+        val heightRange = findViewById<RangeSlider>(R.id.heightRange)
+
+
+        //eventos para cambiar el genero
         maleCard.setOnClickListener {
             selectedGender(true,maleCard,femaleCard)
         }
@@ -35,6 +49,14 @@ class MainActivity : AppCompatActivity() {
         femaleCard.setOnClickListener {
             selectedGender(false,maleCard,femaleCard)
         }
+
+        //evento para actualizar el valor de la altura
+        heightRange.addOnChangeListener { slider, value,_->
+            //cambiar el el valor de la altura
+            heightText.text = "${value.toInt()} cm"
+            setHeight(value.toInt())
+        }
+
     }
 
     //funcion para seleccionar un genero
@@ -51,6 +73,11 @@ class MainActivity : AppCompatActivity() {
             maleCard.setCardBackgroundColor(Color.parseColor("#3a3941"))
             femaleCard.setCardBackgroundColor(Color.parseColor("#212025"))
         }
+    }
+
+    //cambiar elm valor de la altura
+    private fun setHeight(value: Int){
+        height=value
     }
 
 }
