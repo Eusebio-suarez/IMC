@@ -177,17 +177,6 @@
                 android:gravity="center">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/addWeight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="#FF6200EE"
-                    android:src="@drawable/ic_add"
-                    app:tint="@color/white">
-
-                </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/subtractWeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -196,6 +185,19 @@
                     app:tint="@color/white">
 
                 </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/addWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#FF6200EE"
+                    android:src="@drawable/ic_add"
+                    app:tint="@color/white">
+
+                </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
 
             </LinearLayout>
 
@@ -215,5 +217,63 @@
         app:cardCornerRadius="16dp"
         android:backgroundTint="#3a3941">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Edad"
+                android:textColor="@color/white"
+                android:textSize="20sp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/ageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textStyle="bold"
+                android:textSize="35sp"
+                android:textColor="@color/white">
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/subtractAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FF6200EE"
+                    android:src="@drawable/ic_minus"
+                    app:tint="@color/white">
+
+                </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/addAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#FF6200EE"
+                    android:src="@drawable/ic_add"
+                    app:tint="@color/white">
+
+                </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
