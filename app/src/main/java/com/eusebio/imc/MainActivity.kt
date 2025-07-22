@@ -6,16 +6,19 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.filament.View
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.RangeSlider
+import com.google.android.material.slider.Slider
 
 class MainActivity : AppCompatActivity() {
     private var isMaleSelected = true
     private var isFemaleSelected = false
 
-    private var height = 120
+    private var height = 170
 
     private var weight = 60
 
@@ -25,9 +28,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+        val mainLayout = findViewById<ConstraintLayout>(R.id.main)
+
+        // guarda el padding original del XML
+        val originalPaddingTop = mainLayout.paddingTop
+        val originalPaddingBottom = mainLayout.paddingBottom
+        val originalPaddingLeft = mainLayout.paddingLeft
+        val originalPaddingRight = mainLayout.paddingRight
+
+        ViewCompat.setOnApplyWindowInsetsListener(mainLayout) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(
+                systemBars.left + originalPaddingLeft,
+                systemBars.top + originalPaddingTop,
+                systemBars.right + originalPaddingRight,
+                systemBars.bottom + originalPaddingBottom
+            )
             insets
         }
 
@@ -43,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         val heightText = findViewById<TextView>(R.id.height)
 
         //rangon de altura
-        val heightRange = findViewById<RangeSlider>(R.id.heightRange)
+        val heightRange = findViewById<Slider>(R.id.heightRange)
 
 
         //texto de el peso
