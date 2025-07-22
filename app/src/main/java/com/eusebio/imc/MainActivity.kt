@@ -2,6 +2,7 @@ package com.eusebio.imc
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.filament.View
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.RangeSlider
 import com.google.android.material.slider.Slider
@@ -78,6 +80,8 @@ class MainActivity : AppCompatActivity() {
         var btnAddAge = findViewById<FloatingActionButton>(R.id.addAge)
         var btnSubtractAge = findViewById<FloatingActionButton>(R.id.subtractAge)
 
+        //boton para calcular el imc
+        val btnCalculate = findViewById<MaterialButton>(R.id.btncalculateIMC)
 
         //eventos para cambiar el genero
         maleCard.setOnClickListener {
@@ -119,6 +123,11 @@ class MainActivity : AppCompatActivity() {
             ageText.text = age.toString()
         }
 
+        //eveto para calcular el imc
+        btnCalculate.setOnClickListener{
+            calculateIMC(height,weight)
+        }
+
     }
 
     //funcion para seleccionar un genero
@@ -140,6 +149,14 @@ class MainActivity : AppCompatActivity() {
     //cambiar elm valor de la altura
     private fun setHeight(value: Int){
         height=value
+    }
+
+    //funcion para calcura el imc
+    private fun calculateIMC(height:Int,weight:Int){
+        //convertr la altura a metros
+        val heightMt = height.toDouble()/100
+        val imc = weight.toDouble()/(heightMt*heightMt)
+        Log.i("imc","$imc")
     }
 
 }
