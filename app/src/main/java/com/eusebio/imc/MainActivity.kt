@@ -1,5 +1,6 @@
 package com.eusebio.imc
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -125,7 +126,9 @@ class MainActivity : AppCompatActivity() {
 
         //eveto para calcular el imc
         btnCalculate.setOnClickListener{
-            calculateIMC(height,weight)
+            val imc = calculateIMC(height,weight)
+            //navegar a la pantalla de resultado
+            navigateToResult(imc,isMaleSelected, age)
         }
 
     }
@@ -152,11 +155,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     //funcion para calcura el imc
-    private fun calculateIMC(height:Int,weight:Int){
+    private fun calculateIMC(height:Int,weight:Int): Double{
         //convertr la altura a metros
         val heightMt = height.toDouble()/100
-        val imc = weight.toDouble()/(heightMt*heightMt)
-        Log.i("imc","$imc")
+        return weight.toDouble()/(heightMt*heightMt)
     }
 
+    private fun navigateToResult(IMC: Double,isMale: Boolean,age:Int){
+        var intent = Intent(this, resultActivity::class.java)
+
+        //enviar la informacion nesesaria para mostrar el resultado
+        intent.putExtra("IMC",IMC)
+        startActivity(intent)
+    }
 }

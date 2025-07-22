@@ -6,7 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".startIMCActivity"
-    android:background="#131314">
+    android:background="#131314"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="40dp"
+    android:fitsSystemWindows="true">
     <TextView
         android:id="@+id/mainText"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,18 +27,18 @@
     </TextView>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mainText"
         android:layout_marginTop="20dp"
-        android:text="Start"
-        android:backgroundTint="#5865F2"
+        android:text="calcular"
+        android:backgroundTint="@color/purple_200"
         android:textColor="@color/white"
-        app:cornerRadius="12dp"
+        app:cornerRadius="18dp"
         android:textStyle="bold"
-        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
         >
     </com.google.android.material.button.MaterialButton>
 

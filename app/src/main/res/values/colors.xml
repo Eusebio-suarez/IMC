@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="peso_bajo">#D84315</color>
+    <color name="peso_ideal">#26C02E</color>
+    <color name="peso_alto">#C62828</color>
 </resources>

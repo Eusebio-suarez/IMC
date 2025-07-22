@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
@@ -13,9 +14,22 @@ class startIMCActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_imcactivity)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        val mainLayout = findViewById<ConstraintLayout>(R.id.main)
+
+        // guarda el padding original del XML
+        val originalPaddingTop = mainLayout.paddingTop
+        val originalPaddingBottom = mainLayout.paddingBottom
+        val originalPaddingLeft = mainLayout.paddingLeft
+        val originalPaddingRight = mainLayout.paddingRight
+
+        ViewCompat.setOnApplyWindowInsetsListener(mainLayout) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(
+                systemBars.left + originalPaddingLeft,
+                systemBars.top + originalPaddingTop,
+                systemBars.right + originalPaddingRight,
+                systemBars.bottom + originalPaddingBottom
+            )
             insets
         }
 
